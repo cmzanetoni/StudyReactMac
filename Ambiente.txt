@@ -1,5 +1,6 @@
-Instalando NodeJS no Mac
+///////// Configurando ambiente no MAC e instalando apps necessários
 
+Instalando NodeJS no Mac
 
 1 - Instalar Xcode: Através da App Store do Mac mesmo. É um pacote de ferramentas da Apple para desenvolvimento nas suas plataformas/dispositivos.
 	1.1 - Abrir o app e aceitar os termos para não pedir permissão (sudo) no Terminal todas as vezes.
@@ -72,3 +73,21 @@ Comandos:
 	Ver versão do npm: npm -v
 
 4 - WebStorm: Download pelo site deles (JetBrains IDE’s). É uma IDE com foco em frameworks Java Script, optei por ele pois o Visual Studio passou a não ter mais atualizações desde Agosto de 2024.
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+///////// Criando projeto
+
+No terminal:
+
+npm create vite@latest
+	nome_projeto
+	React
+	JavaScript (apenas)
+cd .\nome_projeto\
+npm i
+npm run dev
