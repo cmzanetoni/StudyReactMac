@@ -101,3 +101,13 @@ press u + enter to show server url
 press o + enter to open in browser
 press c + enter to clear console
 press q + enter to quit
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+///////// Infos
+
+Classes do React:
+    Atributo className pois o class é exclusivo do HTML, gerando erro no console do navegador, ex:
+    <p className="teste"></p>
