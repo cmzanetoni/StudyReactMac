@@ -8,8 +8,23 @@ Instalando NodeJS no Mac
 2 - Instalar o NVM: Através do repositório deles do GitHub pois no site não informa algumas linhas de comando como a de configuração de usuário. É um gerenciador de Node para Macbook
 	2.1 - Comando instalação: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 	2.2 - Fechar e abrir o terminal
-	2.3 - Comando configuração profile NVM para o usuário: export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+	2.3 - Comando configuração profile NVM para o usuário:
+		2.3.1 - No terminal sempre que for usar: export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+		2.3.2 - Configurar para sempre dar permissão:
+			2.3.2.1 - nano ~/.bashrc
+				Insluir a linha: export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+				Salvar
+			2.3.2.2 - nano ~/.bash_profile
+				Insluir a linha: export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+				Salvar
+			2.3.2.3 - nano ~/.zshrc
+				Insluir a linha: export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+				Salvar
+			Fechar o terminal
 	2.4 - Comando verificar se está instalado (trás a versão): nvm -v
 	2.5 - Comando verificar versões do NODE (não terá nenhuma nesse momento): nvm ls
 	Retorno:
@@ -22,21 +37,6 @@ Obs. Mensagem de retorno após instalação:
 => Close and reopen your terminal to start using nvm or run the following to use it now:
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
-\\ ???? ainda não fiz
-1.Abra seu arquivo de configuração do shell:
-	•	Para bash, edite ~/.bashrc ou ~/.bash_profile.
-	•	Para zsh, edite ~/.zshrc.
-	2.	Adicione as seguintes linhas:
-
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "$HOME/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-
-	3.	Salve o arquivo e reinicie o terminal ou execute source ~/.bashrc (ou source ~/.zshrc, dependendo do shell que você está usando) para aplicar as mudanças.
-
-Assim, o NVM deve ser carregado automaticamente em novos terminais.
-\\
 
 
 3 - Instalar o Node.js: Através do comando sugeridos pelo site do NodeJS
