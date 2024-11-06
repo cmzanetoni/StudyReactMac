@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 //Imagens
 import City from './assets/city.jpg';
+import ManageData from "./components/ManageData.jsx";
 
 function App() {
   const [count, setCount] = useState(0)
@@ -19,6 +20,7 @@ function App() {
         <div>
             <img src={City} alt="Cidade"/>
         </div>
+        <ManageData />
     </>
   )
 }
