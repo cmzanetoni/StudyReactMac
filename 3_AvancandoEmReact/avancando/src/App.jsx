@@ -7,9 +7,12 @@ import City from './assets/city.jpg';
 import ManageData from "./components/ManageData.jsx";
 import ListRender from "./components/ListRender.jsx";
 import ConditionalRender from "./components/ConditionalRender.jsx";
+import ShowUserName from "./components/ShowUserName.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  const name = "Caio";
+  const userName = useState("Marcos");
 
   return (
     <>
@@ -25,6 +28,7 @@ function App() {
         <ManageData />
         <ListRender />
         <ConditionalRender />
+        <ShowUserName name={userName}/>
     </>
   )
 }
