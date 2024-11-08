@@ -32,7 +32,10 @@ function App() {
         {/* props */}
         <ShowUserName name={userName}/>
         {/* structuring */}
-        <CarDetails brand="VW" km={1000} color="Azul"/>
+        <CarDetails brand="VW" km={1000} color="Azul" newCar={false}/>
+        {/* reaproveitando */}
+        <CarDetails brand="Ford" color="Vermelha" km={0} newCar={true}/>
+        <CarDetails brand="Fiat" color="Branco" km={2500} newCar={false}/>
     </>
   )
 }
