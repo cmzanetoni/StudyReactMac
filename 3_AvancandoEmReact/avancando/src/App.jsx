@@ -8,6 +8,7 @@ import ManageData from "./components/ManageData.jsx";
 import ListRender from "./components/ListRender.jsx";
 import ConditionalRender from "./components/ConditionalRender.jsx";
 import ShowUserName from "./components/ShowUserName.jsx";
+import CarDetails from "./components/CarDetails.jsx";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -28,7 +29,10 @@ function App() {
         <ManageData />
         <ListRender />
         <ConditionalRender />
+        {/* props */}
         <ShowUserName name={userName}/>
+        {/* structuring */}
+        <CarDetails brand="VW" km={1000} color="Azul"/>
     </>
   )
 }
