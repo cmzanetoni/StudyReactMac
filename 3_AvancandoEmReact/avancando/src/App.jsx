@@ -11,6 +11,7 @@ import ShowUserName from "./components/ShowUserName.jsx";
 import CarDetails from "./components/CarDetails.jsx";
 import Fragment from "./components/Fragment.jsx";
 import Container from "./components/Container.jsx";
+import ExecuteFunction from "./components/ExecuteFunction.jsx";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -19,6 +20,10 @@ function App() {
     {id: 1, brand: "Ferrari", color: "Fermelha", newCar: true, km: 0},
     {id: 2, brand: "Kia", color: "Amarelo", newCar: false, km: 1000 },
     {id: 3, brand: "Renault", color: "Azul", newCar: false, km: 5000}]
+
+    function showMessage() {
+      console.log("Evento do componente pai!");
+    }
 
   return (
     <>
@@ -56,6 +61,8 @@ function App() {
       <Container myValue="testing">
           <p>E este é o conteúdo</p>
       </Container>
+      {/* Executar função */}
+      <ExecuteFunction myFunction={showMessage} />
     </>
   )
 }
