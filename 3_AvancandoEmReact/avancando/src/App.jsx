@@ -10,6 +10,7 @@ import ConditionalRender from "./components/ConditionalRender.jsx";
 import ShowUserName from "./components/ShowUserName.jsx";
 import CarDetails from "./components/CarDetails.jsx";
 import Fragment from "./components/Fragment.jsx";
+import Container from "./components/Container.jsx";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -51,7 +52,10 @@ function App() {
       ))}
       {/* Fragment */}
       <Fragment propFragment="teste" />
-
+      {/* Children */}
+      <Container myValue="testing">
+          <p>E este é o conteúdo</p>
+      </Container>
     </>
   )
 }
