@@ -14,6 +14,7 @@ import Container from "./components/Container.jsx";
 import ExecuteFunction from "./components/ExecuteFunction.jsx";
 import Message from "./components/Message.jsx";
 import ChangeMessagemState from "./components/ChangeMessagemState.jsx";
+import UserDetails from "./components/UserDetails.jsx";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -31,6 +32,13 @@ function App() {
   const handleMessage = (msg) => {
       setMessage(msg);
   }
+
+  /* Desafio 4 */
+  const peoples = [
+      {id: 1, name: "Caio", age: 36, profession: "Dev"},
+      {id: 2, name: "Antonio", age: 27, profession: "Vendedor"},
+      {id: 3, name: "Luan", age: 13, profession: "Estudante"}
+  ]
 
   return (
     <>
@@ -73,6 +81,15 @@ function App() {
       {/* State lift */}
       <Message msg={message} />
       <ChangeMessagemState handleMessage={handleMessage} />
+      {/* Desafio 4 */}
+        {peoples.map((people) => (
+            <UserDetails
+                id={people.id}
+                name={people.name}
+                age={people.age}
+                profession={people.profession}
+            />
+        ))}
     </>
   )
 }
