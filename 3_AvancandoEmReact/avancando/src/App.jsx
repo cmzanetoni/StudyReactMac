@@ -12,6 +12,8 @@ import CarDetails from "./components/CarDetails.jsx";
 import Fragment from "./components/Fragment.jsx";
 import Container from "./components/Container.jsx";
 import ExecuteFunction from "./components/ExecuteFunction.jsx";
+import Message from "./components/Message.jsx";
+import ChangeMessagemState from "./components/ChangeMessagemState.jsx";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -21,9 +23,14 @@ function App() {
     {id: 2, brand: "Kia", color: "Amarelo", newCar: false, km: 1000 },
     {id: 3, brand: "Renault", color: "Azul", newCar: false, km: 5000}]
 
-    function showMessage() {
-      console.log("Evento do componente pai!");
-    }
+  function showMessage() {
+    console.log("Evento do componente pai!");
+  }
+
+  const [message, setMessage] = useState("");
+  const handleMessage = (msg) => {
+      setMessage(msg);
+  }
 
   return (
     <>
@@ -63,6 +70,9 @@ function App() {
       </Container>
       {/* Executar função */}
       <ExecuteFunction myFunction={showMessage} />
+      {/* State lift */}
+      <Message msg={message} />
+      <ChangeMessagemState handleMessage={handleMessage} />
     </>
   )
 }
