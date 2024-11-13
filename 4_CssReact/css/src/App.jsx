@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import MyComponent from "./Components/MyComponent.jsx";
+import Title from "./Components/Title.jsx";
 
 function App() {
   const [count, setCount] = useState(0)
@@ -29,6 +30,8 @@ function App() {
           <h2 style={name === "Caio" ? {color: "green", backgroundColor: "#000"} : null}>Teste Nome</h2>
           {/* Classe dinämica */}
           <h2 className={redTitle ? "red-title" : "title"}>Este título vai ter classe dinâmica</h2>
+          {/* CSS Modules */}
+          <Title />
       </>
   )
 }
