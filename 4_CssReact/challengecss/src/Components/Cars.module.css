@@ -1,0 +1,16 @@
+.cars_h1 {
+    text-align: center;
+    color: #1a1a1a;
+    background-color: #535bf2;
+    margin: 50px auto;
+    padding: 10px;
+    font-family: cursive;
+}
+
+.cars_h2 {
+    color: #242424;
+}
+
+.cars_p {
+    color: coral;
+}
