@@ -10,7 +10,7 @@ function App() {
   return (
       <>
           <h2>Forms</h2>
-          <MyForm user={{name: "Caio", email: "caio@gmail.com"}}/>
+          <MyForm user={{name: "Caio", email: "caio@gmail.com", bio: "Bio...", role: "admin"}}/>
       </>
   )
 }
