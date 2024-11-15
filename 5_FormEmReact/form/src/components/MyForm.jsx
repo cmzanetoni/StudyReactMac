@@ -2,8 +2,6 @@ import './MyForm.css'
 import {useState} from "react";
 
 const MyForm = ({user}) => {
-    // 6 - Controlled do input
-
     // 3 - Gerenciamento de dados
     const [name, setName] = useState(user ? user.name : "")
     const [email, setEmail] = useState(user ? user.email : "")
@@ -15,10 +13,15 @@ const MyForm = ({user}) => {
     //console.log(name);
     //console.log(email);
 
+    // 6 - Controlled do input
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log("Enviando o formulário");
         console.log(name, email);
+
+        /* 7 - Limpando form */
+        setName("");
+        setEmail("");
     }
 
     return (
