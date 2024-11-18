@@ -19,13 +19,28 @@ const stages = [
 
 function App() {
   const [gameStage, setGameStage] = useState(stages[0].name)
-    const [words] = useState(wordsList);
+  const [words] = useState(wordsList);
+
+  // starts the scret word game
+  const startGame = () => {
+      setGameStage(stages[1].name)
+  }
+
+  // process the letter input
+  const verityLetter = () => {
+      setGameStage(stages[2].name)
+  }
+
+  // restarts the game
+  const retry = () => {
+      setGameStage(stages[0].name)
+  }
 
   return (
     <div className="App">
-        {gameStage === "start" && <StartScreen />}
-        {gameStage === "game" && <Game />}
-        {gameStage === "end" && <GameOver />}
+        {gameStage === "start" && <StartScreen startGame={startGame} />}
+        {gameStage === "game" && <Game verityLetter={verityLetter} />}
+        {gameStage === "end" && <GameOver retry={retry} />}
     </div>
   )
 }
