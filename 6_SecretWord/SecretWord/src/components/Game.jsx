@@ -26,7 +26,6 @@ const Game = ( {verityLetter}) => {
                 <span>a, </span>
                 <span>b, </span>
             </div>
-            <button onClick={verityLetter} >Finalizar jogo</button>
         </div>
     )
 }
