@@ -33,10 +33,6 @@ function App() {
   const pickWordAndCategory = () => {
       // pick a random category
       const categories = Object.keys(words)
-      //console.log(categories.length)
-      //console.log(Object.keys(categories).length)
-      //console.log(Math.floor(Math.random() * categories.length))
-      //console.log(Math.floor(Math.random() * Object.keys(categories).length))
       const category = categories[Math.floor(Math.random() * categories.length)]
       console.log(category)
 
@@ -123,7 +119,7 @@ function App() {
                                        guesses={guesses}
                                        score={score}
         />}
-        {gameStage === "end" && <GameOver retry={retry} />}
+        {gameStage === "end" && <GameOver retry={retry} score={score} />}
     </div>
   )
 }
