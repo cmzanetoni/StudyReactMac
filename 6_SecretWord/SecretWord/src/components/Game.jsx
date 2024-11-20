@@ -11,7 +11,7 @@ const Game = ( {verityLetter, pickedWord, pickedCategory, letters, guessedLetter
         verityLetter(letter);
 
         console.log("antes");
-        setLetter("");
+        setLetter(""); /// VERIFICAR QUE NÃO FUNCIONA
         console.log("depois");
         letterInputRef.current.focus();
     }

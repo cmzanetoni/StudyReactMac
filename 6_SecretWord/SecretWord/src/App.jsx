@@ -66,8 +66,28 @@ function App() {
 
   // process the letter input
   const verityLetter = (letter) => {
-      console.log(letter + "ök");
+      const normalizedLetter = letter.toLowerCase();
+
+      // check if letter has already been utilized
+      if(guessedLetters.includes(normalizedLetter) || wrongLetters.includes(normalizedLetter)) {
+          return;
+      }
+
+      // push guessed letter or remove a guess
+      if(letters.includes(normalizedLetter)) {
+          setGuessedLetters((actualGuessedLetter) => [
+              ...actualGuessedLetter, normalizedLetter
+          ]);
+      }
+      else {
+          setWrongLetters((actualWrongLetter) => [
+              ...actualWrongLetter, normalizedLetter
+          ]);
+      }
   }
+  console.log("Letras");
+  console.log(guessedLetters);
+  console.log(wrongLetters);
 
   // restarts the game
   const retry = () => {
