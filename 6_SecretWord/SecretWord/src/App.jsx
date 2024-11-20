@@ -17,6 +17,8 @@ const stages = [
     {id: 3, name: "end"},
 ]
 
+const guessesQty = 3;
+
 function App() {
   const [gameStage, setGameStage] = useState(stages[0].name)
   const [words] = useState(wordsList);
@@ -25,7 +27,7 @@ function App() {
   const [letters, setLetters] = useState([])
   const [guessedLetters, setGuessedLetters] = useState([])
   const [wrongLetters, setWrongLetters] = useState([])
-  const [guesses, setGuesses] = useState(3)
+  const [guesses, setGuesses] = useState(guessesQty)
   const [score, setScore] = useState(0)
 
   const pickWordAndCategory = () => {
@@ -83,14 +85,29 @@ function App() {
           setWrongLetters((actualWrongLetter) => [
               ...actualWrongLetter, normalizedLetter
           ]);
+
+          setGuesses((actualGuesses) => actualGuesses -1);
       }
   }
-  console.log("Letras");
-  console.log(guessedLetters);
-  console.log(wrongLetters);
+
+  useEffect(() => {
+      if(guesses <= 0 ) { // Finish the game
+          // reset all states
+          clearLetterStates();
+
+          setGameStage(stages[2].name);
+      }
+  }, [guesses]); // o que esses [guesses] faz? é retornado?
+
+  const clearLetterStates = () => {
+      setGuessedLetters([]);
+      setWrongLetters([]);
+  }
 
   // restarts the game
   const retry = () => {
+      setScore(0);
+      setGuesses(guessesQty);
       setGameStage(stages[0].name)
   }
 

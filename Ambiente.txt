@@ -111,3 +111,27 @@ press q + enter to quit
 Classes do React:
     Atributo className pois o class é exclusivo do HTML, gerando erro no console do navegador, ex:
     <p className="teste"></p>
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+///////// Pesquisar
+
+-- O que é o actualXXXX (é o state ?)
+setWrongLetters((actualWrongLetter) => [
+              ...actualWrongLetter, normalizedLetter
+]);
+
+-- O que [e o useEffect ???
+-- O que esses [guesses] faz? é retornado?
+useEffect(() => {
+      if(guesses <= 0 ) { // Finish the game
+          // reset all states
+          clearLetterStates();
+
+          setGameStage(stages[2].name);
+      }
+  }, [guesses]);
