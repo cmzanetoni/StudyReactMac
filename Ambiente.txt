@@ -135,3 +135,16 @@ useEffect(() => {
           setGameStage(stages[2].name);
       }
   }, [guesses]);
+
+
+-- O que é o preventDefault ?
+const handleSubmit = (e) => {
+        e.preventDefault();
+        verityLetter(letter);
+        setLetter("");
+        letterInputRef.current.focus();
+    }
+
+-- O que é o ref={letterInputRef}
+<input type="text" name="letter" maxLength="1" required value={letter}
+onChange={(e) => setLetter(e.target.value)} ref={letterInputRef} />
