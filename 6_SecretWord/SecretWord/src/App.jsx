@@ -65,8 +65,8 @@ function App() {
   }
 
   // process the letter input
-  const verityLetter = () => {
-      setGameStage(stages[2].name)
+  const verityLetter = (letter) => {
+      console.log(letter + "ök");
   }
 
   // restarts the game
