@@ -107,7 +107,11 @@ press q + enter to quit
 cd pasta_projeto
 npm i json-server
 
+--no arquivo package.json inserir a linha abaixo em scrits:
+"server": "json-server --watch data/db.json"
 
+--em outro aba de console rodar o comando abaixo, ele vai utilizar outra porta
+npm run server
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
