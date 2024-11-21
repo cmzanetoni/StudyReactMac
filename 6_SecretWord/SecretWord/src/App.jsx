@@ -34,11 +34,9 @@ function App() {
       // pick a random category
       const categories = Object.keys(words)
       const category = categories[Math.floor(Math.random() * categories.length)]
-      console.log(category)
 
       // pick a random word
       const word = words[category][Math.floor(Math.random() * words[category].length)]
-      console.log(word)
 
       return { word, category }
   }, [words])
@@ -53,9 +51,6 @@ function App() {
 
       // create an array of letters
       let wordLetters = word.toLowerCase().split("");
-
-      console.log(word, category);
-      console.log(wordLetters);
 
       // fill state
       setPickedWord(word);
