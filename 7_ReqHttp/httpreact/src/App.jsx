@@ -56,6 +56,10 @@ function App() {
     setPrice("");
   }
 
+  const handleDelete = async (id) => {
+    httpConfig(id, "DELETE");
+  }
+
   return (
     <>
       <h1>Lista de Produtos</h1>
@@ -64,7 +68,11 @@ function App() {
       {error && <p>{error}</p>}
       <ul>
         {items && items.map((product) => (
-          <li key={product.id}>{product.name} - R$: {product.price}</li>
+          <li key={product.id}>{product.name} - R$: {product.price}
+            <button onClick={() => handleDelete(product.id)}
+                    disabled={loading}
+            >{loading ? "Aguarde" : "Deletar" }</button>
+          </li>
         ))}
       </ul>
       <div className="add-product">
@@ -79,10 +87,12 @@ function App() {
             <input type="number" placeholder="Valor"
                    name="price" value={price} onChange={e => setPrice(e.target.value)}/>
           </label>
+          <label>
           {/* 7 - State de loading no post */}
           {<input type="submit" disabled={loading} value={loading ? "Aguarde" : "Criar" } />}
           {/*{<input type="submit" value="Criar" disabled={loading} value="Aguarde" />}*/}
           {/*{!loading && <input type="submit" value="Criar" />}*/}
+          </label>
         </form>
       </div>
     </>
