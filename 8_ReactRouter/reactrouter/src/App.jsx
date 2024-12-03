@@ -11,6 +11,7 @@ import Product from "./pages/Product.jsx";
 // pages
 import Home from './pages/Home';
 import About from './pages/About';
+import Info from './pages/Info';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -24,8 +25,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          {/*  4 - roda dinâmica*/}
+          {/* 4 - roda dinâmica */}
           <Route path="/products/:id" element={<Product />} />
+          {/* 6 - nested route */}
+          <Route path="/products/:id/info" element={<Info />} />
         </Routes>
       </BrowserRouter>
     </>
