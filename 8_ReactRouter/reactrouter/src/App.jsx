@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './App.css'
 
 // 1 - config react router
-import {BrowserRouter, Routes, Router, Route} from "react-router-dom";
+import {BrowserRouter, Routes, Router, Route, Navigate} from "react-router-dom";
 
 // components
 import Navbar from './components/Navbar';
@@ -36,6 +36,8 @@ function App() {
           <Route path="/products/:id/info" element={<Info />} />
           {/* 9 - search */}
           <Route path="/search" element={<Search />} />
+          {/* 10 - redirect */}
+          <Route path="/company" element={<Navigate to="/about" />} />
           {/* 7 - no match route */}
           <Route path="*" element={<NotFound />} />
         </Routes>
