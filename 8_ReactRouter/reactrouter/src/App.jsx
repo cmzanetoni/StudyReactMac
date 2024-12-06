@@ -6,13 +6,15 @@ import {BrowserRouter, Routes, Router, Route} from "react-router-dom";
 
 // components
 import Navbar from './components/Navbar';
-import Product from "./pages/Product.jsx";
+import SearchForm from "./components/SearchForm.jsx";
 
 // pages
 import Home from './pages/Home';
 import About from './pages/About';
+import Product from "./pages/Product.jsx";
 import Info from './pages/Info';
 import NotFound from './pages/NotFound';
+import Search from './pages/Search.jsx';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -23,6 +25,8 @@ function App() {
       <BrowserRouter>
         {/* 2 - links com react router */}
         <Navbar />
+        {/* 9 - Search */}
+        <SearchForm />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -30,6 +34,8 @@ function App() {
           <Route path="/products/:id" element={<Product />} />
           {/* 6 - nested route */}
           <Route path="/products/:id/info" element={<Info />} />
+          {/* 9 - search */}
+          <Route path="/search" element={<Search />} />
           {/* 7 - no match route */}
           <Route path="*" element={<NotFound />} />
         </Routes>
