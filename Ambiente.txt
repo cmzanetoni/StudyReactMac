@@ -105,7 +105,8 @@ press q + enter to quit
 ///////// React Router
 
 --Instalar
-
+npm i react-router-dom
+--npm i react-router
 
 --Configurar
 
