@@ -161,8 +161,8 @@ setWrongLetters((actualWrongLetter) => [
               ...actualWrongLetter, normalizedLetter
 ]);
 
--- O que [e o useEffect ???
--- O que esses [guesses] faz? é retornado?
+-- O que [e o useEffect ?
+Monitora uma variável, nesse caso a guesses, para toda vez que ela mudar o estado executar esta função.
 useEffect(() => {
       if(guesses <= 0 ) { // Finish the game
           // reset all states
@@ -173,7 +173,8 @@ useEffect(() => {
   }, [guesses]);
 
 
--- O que é o preventDefault ?
+-- O que é o preventDefault :
+Previni o page reload (recarregamendo de página, já que usamos spa)
 const handleSubmit = (e) => {
         e.preventDefault();
         verityLetter(letter);
@@ -184,3 +185,6 @@ const handleSubmit = (e) => {
 -- O que é o ref={letterInputRef}
 <input type="text" name="letter" maxLength="1" required value={letter}
 onChange={(e) => setLetter(e.target.value)} ref={letterInputRef} />
+
+-- Comando npm i react-router-dom
+Instala o pacote de rotas do react
