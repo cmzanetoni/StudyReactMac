@@ -100,6 +100,21 @@ press o + enter to open in browser
 press c + enter to clear console
 press q + enter to quit
 
+
+///////// Atualizando projeto
+
+Warnings que estavam gerando por conta da versão desatualizada da engine:
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: '@vitejs/plugin-react@5.1.1',
+npm warn EBADENGINE   required: { node: '^20.19.0 || >=22.12.0' },
+npm warn EBADENGINE   current: { node: 'v22.11.0', npm: '10.9.0' }
+npm warn EBADENGINE }
+npm warn EBADENGINE Unsu
+
+Comandos para atualizar:
+nvm install 22.12.0
+nvm use 22.12.0
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ///////// React Router
