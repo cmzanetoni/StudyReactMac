@@ -11,7 +11,7 @@ const Login = () => {
 
   // Passar o usuário que o cliente usa, importando na const que vem de useAuthentication
   // Está renomeando o error pq já tem uma variável error de front, então está renomeando o do backend
-  const {createUser, error: authError, loading} = useAuthentication();
+  const {login, error: authError, loading} = useAuthentication(); // Importando a função login do useAuthentication
 
   // Como o createUser é async, tb é necessário colocar no handle
   const handleSubmit = async (e) => {
@@ -24,7 +24,7 @@ const Login = () => {
       password
     }
 
-    const res = await createUser(user);
+    const res = await login(user);
     console.log(user);
   }
 

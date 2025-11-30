@@ -59,11 +59,11 @@ export const useAuthentication = () => {
 
       if(error.message.includes("Password")) {
         systemErrorMessage = "A senha precisa conter pelo menos 6 caracteres.";
-      } else if(error.message.includes("email-already")) {
+      }
+      else if(error.message.includes("email-already")) {
         systemErrorMessage = "E-mail já cadastrado.";
       }
-      else
-      {
+      else {
         systemErrorMessage = "Ocorreu um erro, por favor tente mais tarde.";
       }
 
@@ -74,8 +74,41 @@ export const useAuthentication = () => {
 
   // Logout / Sign out
   const logout = () => {
-    checkIfIsCancelled(); //Evitar memory leak s
+    checkIfIsCancelled(); //Evitar memory leak
     signOut(auth); // Para deslogar no fire base é só chamar a função signOut passando a autenticação
+  }
+
+  // Login / Sig in
+  const login = async (data) => {
+    checkIfIsCancelled(); //Evitar memory leak
+
+    // Zerar loding e erro
+    setLoading(true);
+    setError(false);
+
+    try {
+      await signInWithEmailAndPassword(auth, data.email, data.password);
+      setLoading(false);
+    }
+    catch (error) {
+      console.log(error.message); // depois será tratado os erros
+      console.log(typeof  error.message);
+      
+      let systemErrorMessage;
+
+      if(error.message.includes("user-not-found")) {
+        systemErrorMessage = "Usuário não encontrado.";
+      }
+      else if(error.message.includes("wrong-password")) {
+        systemErrorMessage = "Senha incorreta.";
+      }
+      else {
+        systemErrorMessage = "Ocorreu um erro, por favor tente mais tarde.";
+      }
+
+      setError(systemErrorMessage);
+      setLoading(false);
+    }
   }
 
   // useEffect que vai colocar apenas uma vez o cancelado como true assim que sair dessa página
@@ -90,5 +123,6 @@ export const useAuthentication = () => {
     error,
     loading,
     logout, // Retornar a função de logout para ser usada também
+    login,
   }
 }

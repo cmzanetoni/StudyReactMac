@@ -13,7 +13,7 @@ const Register = () => {
 
   // Passar o usuário que o cliente usa, importando na const que vem de useAuthentication
   // Está renomeando o error pq já tem uma variável error de front, então está renomeando o do backend
-  const {createUser, error: authError, loading} = useAuthentication();
+  const {createUser, error: authError, loading} = useAuthentication(); // Importando a função createUser do useAuthentication
 
   // Como o createUser é async, tb é necessário colocar no handle
   const handleSubmit = async (e) => {
