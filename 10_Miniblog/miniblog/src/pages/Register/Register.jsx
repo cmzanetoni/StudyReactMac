@@ -2,6 +2,8 @@ import styles from "./Register.module.css"
 
 import {useState, useEffect} from "react";
 
+import {useAuthentication} from "../../hooks/useAuthentication.jsx";
+
 const Register = () => {
   const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
@@ -9,7 +11,12 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  // Passar o usuário que o cliente usa, importando na const que vem de useAuthentication
+  // Está renomeando o error pq já tem uma variável error de front, então está renomeando o do backend
+  const {createUser, error: authError, loading} = useAuthentication();
+
+  // Como o createUser é async, tb é necessário colocar no handle
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     setError("");
@@ -25,8 +32,17 @@ const Register = () => {
       return
     }
 
+    const res = await createUser(user);
     console.log(user);
   }
+
+  // useEffect para monitorar se o authError mudou
+  useEffect(() => {
+    if (authError) {
+      setError(authError);
+    }
+  }, [authError]); // authError é quem está sendo monitorado (executar toda vez que for alterado)
+
   return (
     <div className={styles.register}>
       <h1>Cadastre-se para postar</h1>
@@ -48,7 +64,8 @@ const Register = () => {
           <span>Confirmação de senha:</span>
           <input type="password" name="confirPassword" required placeholder="Confirme sua senha" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
         </label>
-        <button className="btn">Cadastrar</button>
+        {!loading && <button className="btn">Cadastrar</button>}
+        {loading && <button className="btn" disabled>Aguarde...</button>}
         {error && <p className="error">{error}</p>}
       </form>
     </div>
