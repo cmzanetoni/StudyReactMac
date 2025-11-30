@@ -1,12 +1,11 @@
-import {db} from "../firebase/config";
-
 import {
-  getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
   signOut
 } from 'firebase/auth'
+
+import {auth} from "../firebase/config";
 
 import {useState, useEffect} from 'react'
 
@@ -19,7 +18,7 @@ export const useAuthentication = () => {
   //deal with memory leak
   const [cancelled, setCancelled] = useState(false); //entra como não cancelado, e é cancelado após os processos derem certo
 
-  const auth = getAuth(); //autenticação no fire base
+  //const auth = getAuth(); //autenticação no fire base
 
   function checkIfIsCancelled() {
     if(cancelled){
@@ -84,7 +83,7 @@ export const useAuthentication = () => {
 
     // Zerar loding e erro
     setLoading(true);
-    setError(false);
+    setError(null);
 
     try {
       await signInWithEmailAndPassword(auth, data.email, data.password);
@@ -96,10 +95,13 @@ export const useAuthentication = () => {
       
       let systemErrorMessage;
 
-      if(error.message.includes("user-not-found")) {
+      if (error.message.includes("invalid-credential")) {
+        systemErrorMessage = "E-mail ou senha incorretos.";
+      }
+      else if(error.message.includes("user-not-found")) { // Tratamento de erro descontinuado no firebase por informar em ataques hackers se o usuário existe
         systemErrorMessage = "Usuário não encontrado.";
       }
-      else if(error.message.includes("wrong-password")) {
+      else if(error.message.includes("wrong-password")) { // Tratamento de erro descontinuado no firebase por informar em ataques hackers se o usuário existe
         systemErrorMessage = "Senha incorreta.";
       }
       else {
