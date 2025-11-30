@@ -27,6 +27,7 @@ export const useAuthentication = () => {
     }
   }
 
+  // Register
   const createUser = async (data) => {
     checkIfIsCancelled()
 
@@ -71,6 +72,12 @@ export const useAuthentication = () => {
     }
   }
 
+  // Logout / Sign out
+  const logout = () => {
+    checkIfIsCancelled(); //Evitar memory leak s
+    signOut(auth); // Para deslogar no fire base é só chamar a função signOut passando a autenticação
+  }
+
   // useEffect que vai colocar apenas uma vez o cancelado como true assim que sair dessa página
   // para não ter memory leak no react
   useEffect(() => {
@@ -81,6 +88,7 @@ export const useAuthentication = () => {
     auth,
     createUser,
     error,
-    loading
+    loading,
+    logout, // Retornar a função de logout para ser usada também
   }
 }
