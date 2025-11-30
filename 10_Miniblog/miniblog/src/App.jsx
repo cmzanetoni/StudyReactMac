@@ -1,5 +1,11 @@
 import './App.css'
+
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { onAuthStateChanged } from "firebase/auth" // Mapeia se a autenticação foi feita com sucesso
+
+// Hooks
+import { useState, useEffect } from "react";
+import { useAuthentication} from "./hooks/useAuthentication.jsx"; // Vai pegar a autenticação que já existem na const auth
 
 // Contexts
 import { AuthProvider } from './context/AuthContext';
@@ -14,9 +20,30 @@ import Register from "./pages/Register/Register.jsx";
 
 function App() {
 
+  // Está colocando aqui pq está na função global, onde é mais indicado.
+  // Também poderia ser colocado em um hook para ficar mais segmentado.
+  const [user, setUser] = useState(undefined)
+  const {auth} = useAuthentication() // Já invoca aqui para não ter que fazer isso de novo
+
+  const loadingUser = user === undefined // Vamos saber se está autenticado comparano se ele é undefined ou não
+
+  // Sempre que mudar a autenticação, ele será executados
+  // Assim verifica se ele está autenticado ou não conforme, login, cadastro...
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    })
+  }, [auth])
+
+  // Se o retorno do firebase de usuário não for um login deve retornar null,
+  // que é diferente de undefined, logo uma ação foi executada e não está mais carregando
+  if (loadingUser){
+    return <p>Carregando...</p>
+  }
+
   return (
     <>
-      <AuthProvider>
+      <AuthProvider value={{user}}>
         <BrowserRouter>
           <Navbar />
           <div className="container">
