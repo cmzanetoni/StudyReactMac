@@ -98,10 +98,10 @@ export const useAuthentication = () => {
       if (error.message.includes("invalid-credential")) {
         systemErrorMessage = "E-mail ou senha incorretos.";
       }
-      else if(error.message.includes("user-not-found")) { // Tratamento de erro descontinuado no firebase por informar em ataques hackers se o usuário existe
+      else if(error.message.includes("user-not-found")) { // Tratamento de erro descontinuado no firebase por informar em ataques hackers que este e-mail não está cadastrado
         systemErrorMessage = "Usuário não encontrado.";
       }
-      else if(error.message.includes("wrong-password")) { // Tratamento de erro descontinuado no firebase por informar em ataques hackers se o usuário existe
+      else if(error.message.includes("wrong-password")) { // Tratamento de erro descontinuado no firebase por informar em ataques hackers que o usuário existe e a senha está incorreta
         systemErrorMessage = "Senha incorreta.";
       }
       else {
